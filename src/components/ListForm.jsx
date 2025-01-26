@@ -1,8 +1,9 @@
 import React from "react";
 
-export default function ListForm() {
+export default function ListForm({ onAddItems }) {
+  function handelSubmit() {}
   return (
-    <form className="add-form">
+    <form className="add-form" onSubmit={handelSubmit}>
       <h3>
         <strong>What do you need for you 😍 trip?</strong>
       </h3>

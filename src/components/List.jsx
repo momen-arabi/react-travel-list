@@ -1,19 +1,12 @@
 import React from "react";
+import ListItem from "./ListItem";
 
 export default function List({ items }) {
   return (
     <div className="list">
       <ul>
         {items.map((item) => {
-          return (
-            <li>
-              <input type="checkbox" name="pack" checked={item.packed ? "checked" : ""} />
-              <span>
-                {item.quantity} {item.description}
-              </span>
-              <button>❌</button>
-            </li>
-          );
+          return <ListItem item={item} key={item.id} />;
         })}
       </ul>
 
