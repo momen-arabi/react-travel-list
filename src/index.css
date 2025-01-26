@@ -1,12 +1,10 @@
-/* 
-const initialItems = [
-  { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: false },
-];
-*/
+/* Import Tailwind directives first */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Remove the Flowbite CSS import since we'll handle it differently */
+/* @import "flowbite/dist/flowbite.css"; */
 
 @import url("https://fonts.googleapis.com/css2?family=Monoton&family=Quicksand:wght@500;700&display=swap");
 
@@ -63,7 +61,8 @@ h3 {
 
 button,
 select,
-input {
+input,
+input[type="text"] {
   background-color: #ffebb3;
   color: #5a3e2b;
   font-family: inherit;
@@ -73,6 +72,11 @@ input {
   font-weight: 700;
   font-size: 1.8rem;
   cursor: pointer;
+}
+
+.add-form input,
+.add-form select {
+  min-height: 5rem;
 }
 
 .add-form button {
@@ -99,12 +103,13 @@ input {
   font-size: 1.4rem;
   font-weight: 700;
   margin: 0 0.8rem;
+  min-height: 4rem;
 }
 
 .list ul {
   list-style: none;
   width: 80%;
-  overflow: scroll;
+  overflow: visible;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -119,10 +124,22 @@ input {
   gap: 1.2rem;
 }
 
-input[type="checkbox"] {
+.list input[type="checkbox"] {
   height: 2rem;
   width: 2rem;
-  accent-color: #e5771f;
+  accent-color: #e5771f !important;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #e5771f !important;
+}
+
+input[type="checkbox"]:focus {
+  --tw-ring-color: #e5771f !important;
+}
+
+input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
 }
 
 .list li button {
