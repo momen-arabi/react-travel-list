@@ -14,7 +14,7 @@ export default function ListForm({ onAddItems }) {
   return (
     <form className="add-form" onSubmit={(e) => handelSubmit(e)}>
       <h3>
-        <strong>What do you need for you 😍 trip?</strong>
+        <strong>What do you need for your 😍 trip?</strong>
       </h3>
       <select name="qty" id="qty" value={qty} onChange={(e) => setQty(+e.target.value)}>
         {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
