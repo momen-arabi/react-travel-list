@@ -6,9 +6,11 @@ export default function ListForm({ onAddItems }) {
 
   function handelSubmit(e) {
     e.preventDefault();
-    onAddItems(qty, desc);
-    setDesc("");
-    setQty("1");
+    if (desc) {
+      onAddItems(qty, desc);
+      setDesc("");
+      setQty("1");
+    }
   }
 
   return (
