@@ -1,35 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function ListForm({ onAddItems }) {
-  function handelSubmit() {}
+  const [qty, setQty] = useState("1");
+  const [desc, setDesc] = useState("");
+
+  function handelSubmit(e) {
+    e.preventDefault();
+    onAddItems(qty, desc);
+    setDesc("");
+    setQty("1");
+  }
+
   return (
-    <form className="add-form" onSubmit={handelSubmit}>
+    <form className="add-form" onSubmit={(e) => handelSubmit(e)}>
       <h3>
         <strong>What do you need for you 😍 trip?</strong>
       </h3>
-      <select name="qty" id="qty">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
-        <option value="17">17</option>
-        <option value="18">18</option>
-        <option value="19">19</option>
-        <option value="20">20</option>
+      <select name="qty" id="qty" value={qty} onChange={(e) => setQty(+e.target.value)}>
+        {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
+          <option value={num} key={num}>
+            {num}
+          </option>
+        ))}
       </select>
-      <input type="text" name="item" id="item" placeholder="Item..." />
+      <input type="text" name="item" id="item" placeholder="Item..." value={desc} onChange={(e) => setDesc(e.target.value)} />
       <button className="add-btn">Add</button>
     </form>
   );
